@@ -1,0 +1,12 @@
+{
+    "config": {
+        "platform": {
+            "php": "5.4.16"
+        }
+    },
+    "require": {
+        "vlucas/phpdotenv": "^3.6",
+        "ircmaxell/password-compat": "^1.0",
+        "ircmaxell/random-lib": "^1.2"
+    }
+}
