@@ -71,7 +71,7 @@
 			<ul class="nav flex-column">
 			<?php foreach($clients as $client): ?>
 				<li class="nav-item col-sm-12 px-0">
-					<a class="nav-link text-truncate" href="#">
+					<a class="nav-link text-truncate <?= ('https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']) === (BASE_URL . '/client.php?view=' . $client->cid) ? 'active' : ''?>" href="<?= BASE_URL . '/client.php?view=' . $client->cid ?>">
 						<span data-feather="briefcase"></span>
 						<?= $client->name ?>
 					</a>
@@ -158,7 +158,7 @@
 								<span aria-hidden="true">&times;</span>
 							</button>
 							<h4 class="alert-heading">Error!</h4>
-							<p>One or more invalid fields. Please check that email is <strong>unique</strong>, phone has <strong>10 digits</strong> and hourly wage is a number <strong>between 0 and <?= MAX_WAGE ?></strong>.</p>
+							<p>One or more invalid fields. All are required. Please check that phone has <strong>10 digits</strong>.</p>
 							<small class="mb-0">For any inconveniences, please contact <a class="alert-link" href="mailto:<?= CONTACT_EMAIL ?>"><?= CONTACT_EMAIL ?></a></small>
 						</div>
 					
@@ -167,39 +167,38 @@
 					<form action="<?= BASE_URL . '/processes/addClient.php' ?>" method="post" id="newClientForm">
 						<div class="form-row">
 							<div class="form-group col-md-6">
-								<label for="inputNewName">Name</label>
-								<input type="text" class="form-control <?= (isset($_GET['error']) && $_GET['error'] === 'client') ? 'is-invalid' : '' ?>" name="inputNewName" id="inputNewName" value="<?= (isset($_GET['error']) && $_GET['error'] === 'client') ? $_GET['name'] : '' ?>" required>
+								<label for="inputNewClientName">Name</label>
+								<input type="text" class="form-control <?= (isset($_GET['error']) && $_GET['error'] === 'client') ? 'is-invalid' : '' ?>" name="inputNewClientName" id="inputNewClientName" value="<?= (isset($_GET['error']) && $_GET['error'] === 'client') ? $_GET['name'] : '' ?>" required>
 							</div>
 							<div class="form-group col-md-6">
-								<label for="inputNewEmail">Email</label>
-								<input type="email" class="form-control <?= (isset($_GET['error']) && $_GET['error'] === 'client') ? 'is-invalid' : '' ?>" name="inputNewEmail" id="inputNewEmail" value="<?= (isset($_GET['error']) && $_GET['error'] === 'client') ? $_GET['email'] : '' ?>" required>
+								<label for="inputNewClientAlias">Alias</label>
+								<input type="text" class="form-control <?= (isset($_GET['error']) && $_GET['error'] === 'client') ? 'is-invalid' : '' ?>" name="inputNewClientAlias" id="inputNewClientAlias" value="<?= (isset($_GET['error']) && $_GET['error'] === 'client') ? $_GET['alias'] : '' ?>" required>
 							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputNewClientAddress">Address</label>
+							<textarea class="form-control <?= (isset($_GET['error']) && $_GET['error'] === 'client') ? 'is-invalid' : '' ?>" name="inputNewClientAddress" id="inputNewClientAddress" required><?= (isset($_GET['error']) && $_GET['error'] === 'client') ? $_GET['address'] : '' ?></textarea>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-6">
-								<label for="inputNewPhone">Phone</label>
+								<label for="inputNewContactPhone">Contact Phone</label>
 								<div class="input-group">
 									<div class="input-group-prepend">
 										<div class="input-group-text">+1</div>
 									</div>
-									<input type="tel" class="form-control <?= (isset($_GET['error']) && $_GET['error'] === 'client') ? 'is-invalid' : '' ?>" name="inputNewPhone" id="inputNewPhone" value="<?= (isset($_GET['error']) && $_GET['error'] === 'client') ? $_GET['phone'] : '' ?>">
+									<input type="tel" class="form-control <?= (isset($_GET['error']) && $_GET['error'] === 'client') ? 'is-invalid' : '' ?>" name="inputNewContactPhone" id="inputNewContactPhone" value="<?= (isset($_GET['error']) && $_GET['error'] === 'client') ? $_GET['phone'] : '' ?>" required>
 								</div>
 							</div>
 							<div class="form-group col-md-6">
-								<label for="inputNewHourlyWage">Hourly Wage</label>
-								<div class="input-group">
-									<div class="input-group-prepend">
-										<div class="input-group-text">$</div>
-									</div>
-									<input type="number" class="form-control <?= (isset($_GET['error']) && $_GET['error'] === 'client') ? 'is-invalid' : '' ?>" min="0" step="0.25" max="1000" onchange="this.value = parseFloat(this.value).toFixed(2)" name="inputNewHourlyWage" id="inputNewHourlyWage" value="<?= (isset($_GET['error']) && $_GET['error'] === 'client') ? $_GET['hourlyWage'] : '' ?>">
-								</div>
+								<label for="inputNewClientEmail">Contact Email</label>
+								<input type="email" class="form-control <?= (isset($_GET['error']) && $_GET['error'] === 'client') ? 'is-invalid' : '' ?>" name="inputNewClientEmail" id="inputNewClientEmail" value="<?= (isset($_GET['error']) && $_GET['error'] === 'client') ? $_GET['email'] : '' ?>" required>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="form-check">
-								<input class="form-check-input" type="checkbox" name="inputNewQualifiesOvertime" id="inputNewQualifiesOvertime" <?= (isset($_GET['error']) && $_GET['error'] === 'client' && $_GET['qualifiesOvertime'] === '1') ? 'checked' : '' ?>>
-								<label class="form-check-label" for="inputNewQualifiesOvertime">
-									Will Be Payed Overtime
+								<input class="form-check-input" type="checkbox" name="inputClientPaysOvertime" id="inputClientPaysOvertime" <?= (isset($_GET['error']) && $_GET['error'] === 'client' && $_GET['paysOvertime'] === '1') ? 'checked' : '' ?>>
+								<label class="form-check-label" for="inputClientPaysOvertime">
+									Pays Overtime
 								</label>
 							</div>
 						</div>

@@ -184,7 +184,7 @@
 					<input type="hidden" name="pid" value="<?= $positions[0]->pid ?>" />
 				<?php else: ?>
 					<div class="form-group">
-						<label class="" for="selectPID">Choose a Position</label>
+						<label for="selectPID">Choose a Position</label>
 						<select class="form-control w-75 mx-auto" name="pid" id="selectPID">
 						<?php foreach($positions as $position):	?>
 							<option value="<?= $position->pid ?>"><?= $position->name ?></option>
@@ -206,16 +206,16 @@
 			<h6 class="border-bottom border-gray pb-2 mb-0">Your Last Sessions</h6>
 			<?php if(count($employeeSessions)): ?>		
 				<?php foreach($employeeSessions as $session): ?>
-				<div class="media text-muted pt-3">
-					<svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32">
-						<rect width="100%" height="100%" fill="<?= generateColor(formatDate($session->entered, $session->left)) ?>"></rect>
-					</svg>
-					<p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-						<strong class="d-block text-gray-dark"><?= $session->client ?> – <?= $session->role ?></strong>
-						<?= $session->comment ?>
-						<small class="d-block"><?= formatDate($session->entered, $session->left) ?></small>
-					</p>
-				</div>
+					<div class="media text-muted pt-3">
+						<svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32">
+							<rect width="100%" height="100%" fill="<?= generateColor(formatDate($session->entered, $session->left)) ?>"></rect>
+						</svg>
+						<p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+							<strong class="d-block text-gray-dark"><?= $session->client ?> – <?= $session->role ?></strong>
+							<?= $session->comment ?>
+							<small class="d-block"><?= formatDate($session->entered, $session->left) ?></small>
+						</p>
+					</div>
 				<?php endforeach; ?>
 				<small class="d-block text-right mt-3">
 					<a href="#">All sessions</a>

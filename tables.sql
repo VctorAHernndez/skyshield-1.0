@@ -68,3 +68,16 @@ CREATE TABLE ClockOut (
 	approved BOOLEAN,
 	FOREIGN KEY (ciid) REFERENCES ClockIn(ciid) ON UPDATE CASCADE
 );
+
+
+# Insert Bucket Client
+INSERT INTO Client
+(`cid`, `name`, `alias`, `address`, `contactPhone`, `contactEmail`, `paysOvertime`)
+VALUES
+(0, 'Sky Shield Security', 'SKY', 'Sonny Hernandez Inc.
+Calle D #20
+Ext. Villa Verde
+Cayey, PR 00736', '9396302780', 'victorsonny@yahoo.com', 1);
+
+# Insert Bucket Position
+INSERT INTO Position (`pid`, `cid`, `name`, `alias`, `unitHourlyPrice`) VALUES (0, 0, 'Independent Work', 'IW', 10);

@@ -52,7 +52,8 @@
 				
 				<h4>Overdue</h4>
 				<ul class="list-group ml-5">
-					<li class="list-group-item"><span class="text-primary">Display</span>, <span class="text-success">add</span>, and <span class="text-warning">edit</span> clients and the positions they host, along with <span class="text-success">assigning</span> an employee a particular position.</li>
+					<li class="list-group-item"><span class="text-primary">Display</span> the positions the clients host, along with the possibility of <span class="text-success">creating</span> a new one, and <span class="text-success">assigning</span> an employee a particular position.</li>
+					<li class="list-group-item"><span class="text-primary">Display</span> all the employees that work for a given client in the client's page. And maybe the last <code>n</code> shifts the employee has done.</li>
 					<li class="list-group-item"><span class="text-primary">Display</span>, <span class="text-success">add</span>, and <span class="text-danger">delete</span> disabilities and the employees that <span class="text-success">have</span> them.</li>
 					<li class="list-group-item"><span class="text-danger">Delete</span> or <span class="text-warning">modify</span> "unexpected" and "unapproved" shifts.</li>
 				</ul>

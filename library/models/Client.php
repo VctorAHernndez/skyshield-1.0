@@ -29,8 +29,47 @@
 			$this->db->bind(':paysOvertime', $paysOvertime);
 			
 			// Execute
+			$this->db->execute();
+			
+			// Return Insert ID
+			return $this->db->lastInsertId();
+			
+		}
+		
+		
+		# EDITS EXISTING CLIENT
+		public function setDetails($cid, $name, $alias, $address, $contactPhone, $contactEmail, $paysOvertime = false) {
+		
+			// Prepare Query
+			$this->db->query("UPDATE Client SET name = :name, alias = :alias, address = :address, contactPhone = :contactPhone, contactEmail = :contactEmail, paysOvertime = :paysOvertime WHERE cid = :cid");
+
+			// Bind Values
+			$this->db->bind(':cid', $cid);
+			$this->db->bind(':name', $name);
+			$this->db->bind(':alias', $alias);
+			$this->db->bind(':address', $address);
+			$this->db->bind(':contactPhone', $contactPhone);
+			$this->db->bind(':contactEmail', $contactEmail);
+			$this->db->bind(':paysOvertime', $paysOvertime);
+			
+			// Execute
 			return $this->db->execute() ? true : false;
 			
+		}
+		
+		
+		# USED FOR CLIENT PAGE
+		public function getByID($cid) {
+		
+			// Prepare Query
+			$this->db->query("SELECT * FROM Client WHERE cid = :cid");
+			
+			// Bind Values
+			$this->db->bind(':cid', $cid);
+			
+			// Return Results
+			return $this->db->single();
+		
 		}
 		
 		

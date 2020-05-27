@@ -13,6 +13,7 @@
 				echo "<script src=\"" . BASE_URL . "/public/js/register.js\"></script>\n";
 			} elseif(isAdmin()) {
 			
+				echo "<script src=\"" . BASE_URL . "/public/js/client.js\"></script>";
 				echo "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js\"></script>\n";
 				echo "<script>feather.replace()</script>\n";
 				//      <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
